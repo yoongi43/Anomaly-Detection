@@ -4,7 +4,8 @@ from model_Autoencoder import *
 
 def main():
 
-    data_dir = './data/1st_test'
+    # data_dir = './data/1st_test'
+    data_dir = './data/2nd_test'
     X_train, X_test = load(data_dir, showflag=False, normalizeflag=True)
     """PCA model"""
     pca = model_PCA(n_components=2, svd_solver='full')

@@ -22,7 +22,7 @@ def normalize(data, shuffle=True):
     return ndata
 
 
-def load(data_dir, showflag=False, normalizeflag=True, shuffleflag=True):
+def load(data_dir, train_proportion=0.8, showflag=False, normalizeflag=True, shuffleflag=True):
     """
     load dataset in the data_dir
     :param data_dir: Directory of dataset
@@ -58,7 +58,7 @@ def load(data_dir, showflag=False, normalizeflag=True, shuffleflag=True):
     print("Shape of merged_dataset: ", merged_data.shape)
 
     data_len = merged_data.shape[0]
-    train_len = int(data_len * 0.7)
+    train_len = int(data_len * train_proportion)
     # test_len = int(data_len - train_len)
     dataset_train = merged_data[:train_len]
     dataset_test = merged_data[train_len:]

@@ -35,6 +35,7 @@ class model_PCA(PCA):
     def fit_transform_train(self, X_train, extreme=True):
         self.X_train = X_train
         self.X_train_PCA = pd.DataFrame(self.fit_transform(X_train))
+        print("PCA shape", self.X_train_PCA.shape)
         self.X_train_PCA.index = X_train.index
         self.data_train = np.asarray(self.X_train_PCA.values)
 
