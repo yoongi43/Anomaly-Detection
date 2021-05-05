@@ -63,6 +63,21 @@ Then, data of test dataset would be outliers if their distance is larger than sp
 ### model_Autoencoder.py
 Here, we use an autoencoder to 'compress' the sensor readings to a low dimensional representation, which captures the correlations and interactions between the various variables.
 (Essentially the same principle as the PCA model, but her we also allow for non-linearity among the input variables).
+ 
+The main idea is that as the monitored equipment degrades, this should affect the interaction between the variables.
+As this happens, one will start to see an increased error in the networks re-construction of th input variables.
+
 
 Model consists of 3 fully connected network, which has 10, 2, 10 nodes each.
-It uses MSE as loss function and Adam optimizer.
+
+Encoder learns interactions between the various variables and compress it to second layer with 2 nodes.
+
+Decoder learns to decompress the compressed feature to original size.
+
+For model trained with MSE(Mean Square Error) loss function, input the training set and calculate MAE(Mean Absolute Eror).
+From the distribution of MAE of training set, define threshold of anomaly.
+Then, calculate the MAE of output of test set and flag it as anomaly if it has MAE 
+above threshold.
+
+Model is trained with Adam optimizer.
+
