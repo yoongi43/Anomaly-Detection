@@ -45,7 +45,7 @@ There are also an additional option(proportion of training set, showing the plot
 
 For each file, all the data are taken an absolute value and averaged.
 
-### model_PCA
+### model_PCA.py
 PCA class for dataset.
 
 PCA is one of the dimensionality reduction methods.
