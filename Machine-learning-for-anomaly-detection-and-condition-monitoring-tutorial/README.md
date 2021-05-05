@@ -55,7 +55,14 @@ PCA model reduces dimension of training set into (787, 2) (4 to 2).
 
 Here, we use Mahalanobis distance to measure the distance between a point and a distribution.
 
-That is, we calculate covariance matrix and Mahalanobis distance of training set and for test set,
-Mahalanobis distance is calculated based on covariance matrix of training set.
+That is, we calculate covariance matrix and Mahalanobis distance of training set.
+While for the test set, Mahalanobis distance is calculated based on covariance matrix of training set.
 
-Then, data of test dataset would be outliers if their distance is larger than specific threshold.
+Then, data of test dataset would be outliers if their distance is larger than specific threshold driven from Mahalanobis distance of training set.
+
+### model_Autoencoder.py
+Here, we use an autoencoder to 'compress' the sensor readings to a low dimensional representation, which captures the correlations and interactions between the various variables.
+(Essentially the same principle as the PCA model, but her we also allow for non-linearity among the input variables).
+
+Model consists of 3 fully connected network, which has 10, 2, 10 nodes each.
+It uses MSE as loss function and Adam optimizer.
