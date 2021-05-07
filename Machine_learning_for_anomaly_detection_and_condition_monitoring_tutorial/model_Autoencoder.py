@@ -83,7 +83,7 @@ def pred_model(model, X_train, X_test, visualize=True, THRESHOLD=0.3):
 
     scored_train = pd.DataFrame(index=X_train.index)
     scored_train['Loss_mae'] = np.mean(np.abs(X_pred_train - X_train), axis=1)
-    scored_train['Threshold'] = 0.3
+    scored_train['Threshold'] = 0.18
     scored_train['Anomaly'] = scored_train['Loss_mae'] > scored_train['Threshold']
 
     X_pred = model.predict(np.array(X_test))

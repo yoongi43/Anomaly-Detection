@@ -2,7 +2,6 @@ from sklearn.decomposition import PCA
 from load import *
 
 
-
 def is_pos_def(A):
     if np.allclose(A, A.T):
         try:
@@ -95,13 +94,9 @@ class model_PCA(PCA):
 
         plt.xlim([0.0, 15 if square else 5])
         plt.xlabel('Mahalanobis dist')
-        # plt.figure(figsize=(8,4))
-        # plt.hist(np.square(data),
-        #          bins=10,
-        #          color=color)
         plt.show()
 
-    def anomaly_detection(self, showflag=False):
+    def anomaly_detection(self, showflag=False, saveflag=False):
         anomaly_train = pd.DataFrame()
         anomaly_train['Mob dist'] = self.dist_train
         anomaly_train['Thresh'] = self.threshold
@@ -117,7 +112,10 @@ class model_PCA(PCA):
         anomaly_test.index = self.X_test_PCA.index
 
         anomaly_alldata = pd.concat([anomaly_train, anomaly_test])
-        anomaly_alldata.to_csv("./data/Anomaly_distance.csv")
+        print(anomaly_alldata.head())
+
+        if saveflag:
+            anomaly_alldata.to_csv("./data/Anomaly_distance.csv")
 
         if showflag:
             anomaly_alldata.plot(logy=True, figsize=(10, 6), ylim=[1e-1, 1e3], color=['green', 'red'])

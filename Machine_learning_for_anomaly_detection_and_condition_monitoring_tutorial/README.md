@@ -6,10 +6,6 @@ Code : https://towardsdatascience.com/machine-learning-for-anomaly-detection-and
 
 Dataset : J. Lee, H. Qiu, G. Yu, J. Lin, and Rexnord Technical Services (2007). IMS, University of Cincinnati. "Bearing Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/project/prognostic-data-repository), NASA Ames Research Center, Moffett Field, CA
 
-## Requirement
-python==3.8
-
-
 ## Data
 From Prognostics Data Repository
 
@@ -51,7 +47,7 @@ PCA class for dataset.
 PCA is one of the dimensionality reduction methods.
 
 For example, 2nd dataset has (984, 4) data, and we split it into training set (787, 4) and test set (197, 4).
-PCA model reduces dimension of training set into (787, 2) (4 to 2).
+PCA model reduces dimension of training set into (787, 2). (i.e. 4 to 2.)
 
 Here, we use Mahalanobis distance to measure the distance between a point and a distribution.
 
@@ -75,7 +71,7 @@ Encoder learns interactions between the various variables and compress it to sec
 Decoder learns to decompress the compressed feature to original size.
 
 For model trained with MSE(Mean Square Error) loss function, input the training set and calculate MAE(Mean Absolute Eror).
-From the distribution of MAE of training set, define threshold of anomaly.
+From the distribution of MAE of training set, define threshold of anomaly detection (I set it to 0.18).
 Then, calculate the MAE of output of test set and flag it as anomaly if it has MAE 
 above threshold.
 
