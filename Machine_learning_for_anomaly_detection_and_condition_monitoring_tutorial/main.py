@@ -17,8 +17,8 @@ def main():
     pca.anomaly_detection(showflag=True)
 
     """Autoencoder"""
-    AE = Autoencoder(X_train)
-    pred_model(AE, X_train, X_test)
+    # AE = Autoencoder(X_train)
+    # pred_model(AE, X_train, X_test)
 
 
 if __name__=="__main__":
